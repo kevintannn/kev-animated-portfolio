@@ -28,7 +28,7 @@ const ContentList = ({
   const itemsRef = useRef<Array<HTMLLIElement | null>>([]);
   const lastMousePosition = useRef({ x: 0, y: 0 });
 
-  const urlPrefix = contentType === "Blog" ? "/blog" : "/project";
+  const urlPrefix = contentType === "Blog" ? "/blog" : "/projects";
 
   const contentImages = items.map((item) => {
     const image = isFilled.image(item.data.hover_image)
@@ -134,7 +134,7 @@ const ContentList = ({
               <li
                 ref={(element) => (itemsRef.current[idx] = element)}
                 key={idx}
-                className="list-item opacity-0f"
+                className="list-item opacity-0"
                 onMouseEnter={() => onMouseEnter(idx)}
               >
                 <Link
@@ -146,7 +146,7 @@ const ContentList = ({
                     <span className="text-3xl font-bold">
                       {item.data.title}
                     </span>
-                    <div className="flex gap-3 text-yellow-400 text-lg font-bold">
+                    <div className="flex gap-3 text-lg font-bold text-yellow-400">
                       {item.tags.map((tag, idx) => (
                         <span key={idx}>{tag}</span>
                       ))}
@@ -165,7 +165,7 @@ const ContentList = ({
       {/* HOVER ELEMENT */}
       <div
         ref={revealRef}
-        className="hover-reveal pointer-events-none select-none absolute left-0 top-0 -z-10 h-[320px] w-[220px] rounded-lg bg-cover bg-center opacity-0 transition-[background] duration-300"
+        className="hover-reveal pointer-events-none absolute left-0 top-0 -z-10 h-[320px] w-[220px] select-none rounded-lg bg-cover bg-center opacity-0 transition-[background] duration-300"
         style={{
           backgroundImage:
             currentItem != null ? `url(${contentImages[currentItem]})` : "",
